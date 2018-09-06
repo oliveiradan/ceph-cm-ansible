@@ -7,15 +7,18 @@
 #else
 @base
 #end if
+#if $distro == 'RHEL'
+#set distro_ver = $distro_ver.split(".")[0]
+#end if
+#if not int($distro_ver) == 8
 perl
 wget
 redhat-lsb-core
-## For ansible/NRPE
-smartmontools
 libselinux-python
 libsemanage-python
 policycoreutils-python
-selinux-policy-targeted
 ntp
-## For disk partitioning
+#end if
+smartmontools
+selinux-policy-targeted
 gdisk

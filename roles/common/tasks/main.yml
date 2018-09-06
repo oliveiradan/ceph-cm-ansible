@@ -16,7 +16,7 @@
 
 # configure things specific to yum systems
 - import_tasks: yum_systems.yml
-  when: ansible_pkg_mgr == "yum"
+  when: ansible_os_family == "RedHat"
 
 # configure things specific to apt systems
 - import_tasks: apt_systems.yml

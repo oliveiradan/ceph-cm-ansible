@@ -1,4 +1,12 @@
 ---
+- debug: var=ansible_python_interpreter
+
+- name: Set ansible_python_interpreter=/usr/bin/python3 for RHEL8
+  set_fact:
+    ansible_python_interpreter: /usr/bin/python3
+
+- debug: var=ansible_python_interpreter
+
 - name: Get the current timezone (RHEL/CentOS 6)
   shell: cut -d'"' -f2 /etc/sysconfig/clock
   when: ansible_distribution_major_version == "6"

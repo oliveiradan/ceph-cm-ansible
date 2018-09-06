@@ -43,7 +43,16 @@ reboot
 #Root password
 rootpw --iscrypted $default_password_crypted
 # SELinux configuration
+#set distro = $getVar('distro','').split("-")[0]
+#set distro_ver = $getVar('distro','').split("-")[1]
+#if $distro == 'RHEL'
+#set distro_ver = $distro_ver.split(".")[0]
+#end if
+#if int($distro_ver) == 8
+selinux --disabled
+#else
 selinux --permissive
+#end if
 # Do not configure the X Window System
 skipx
 # System timezone
